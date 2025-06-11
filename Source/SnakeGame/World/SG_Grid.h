@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "SG_WorldTypes.h"
 #include "GameFramework/Actor.h"
 #include "Core/Types.h"
 #include "SG_Grid.generated.h"
@@ -26,16 +27,27 @@ public:
      * @param Grid  model object
      * @param CellSize  world size of the cell
      */
-    void SetModel(const TSharedPtr<Snake::Grid>& Grid, int32 CellSize);
+    void SetModel(const TSharedPtr<Snake::Grid>& Grid, uint32 CellSize);
+
+    void UpdateColors(const FSnakeColors& ColorSet);
 
 protected:
+    UPROPERTY(VisibleAnywhere, Category = "Components")
+    USceneComponent* Origin;
+
+    UPROPERTY(VisibleAnywhere, Category = "Components")
+    UStaticMeshComponent* GridMesh;
+
     virtual void BeginPlay() override;
 
 private:
+    UPROPERTY()
+    UMaterialInstanceDynamic* GridMaterial;
+
     Snake::Dim GridDim;
-    int32 CellSize;
-    int32 WorldWidth;
-    int32 WorldHeight;
+    uint32 CellSize;
+    uint32 WorldWidth;
+    uint32 WorldHeight;
 
     void DrawGrid();
 };

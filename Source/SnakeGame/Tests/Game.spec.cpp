@@ -6,8 +6,8 @@
 #include "Misc/AutomationTest.h"
 #include "SnakeGame/Core/Game.h"
 
-DEFINE_SPEC(FSnakeGame, "Snake",
-    EAutomationTestFlags::ApplicationContextMask | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority)
+DEFINE_SPEC(
+    FSnakeGame, "Snake", EAutomationTestFlags::EditorContext | EAutomationTestFlags::ProductFilter | EAutomationTestFlags::HighPriority)
 
 void FSnakeGame::Define()
 {
